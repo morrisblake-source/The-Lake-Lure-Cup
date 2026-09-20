@@ -1,0 +1,12 @@
+Legends of Lake Lure production security build
+
+Site access code: 2024
+Admin PIN remains: 1961
+
+The access gate remembers successful entry on that browser/device.
+This gate is a privacy/deterrence layer for a static GitHub Pages site, not strong authentication.
+The access code is stored in the deployed JavaScript as a SHA-256 hash rather than plaintext, but a determined technical user can still bypass a client-side gate.
+
+IMPORTANT: The current Supabase application uses anonymous browser access for live scoring/uploads. Tightening all anonymous database/storage writes without adding real user authentication would break scoring, contests, handicaps, Add Player, and Pics/Vids. Do not apply restrictive RLS changes blindly. A stronger security phase would require Supabase Auth or a server/Edge Function to validate the access code and authorize writes.
+
+Recommended production deployment: create a NEW GitHub Pages repository/URL and deploy this build there. Leave the known-good 8.6 test repo untouched as fallback.
